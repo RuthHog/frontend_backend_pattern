@@ -2,7 +2,8 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
-import { Employee } from "./Employee";
+// import { Employee } from "./Employee";
+import { Pipes } from "./Pipes";
 import { SignInButton } from "./SignIn";
 import { SignOutButton } from "./SignOut";
 
@@ -15,7 +16,7 @@ function App() {
             <div className="column is-half">
               <AuthenticatedTemplate>
                 <SignOutButton />
-                <Employee />
+                <Pipes />
               </AuthenticatedTemplate>
               <UnauthenticatedTemplate>
                 <SignInButton />

@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/api/api/obj/Debug/net6.0/refint/api.dll
+/api/api/bin/Debug/net6.0/api.dll
+/api/api/bin/Debug/net6.0/api.pdb
+/api/api/bin/Debug/*
+/api/api/obj/Debug/net6.0/api.AssemblyInfo.cs
+/api/api/obj/project.nuget.cache
+/api/api/obj/project.assets.json
+/api/api/obj/api.csproj.nuget.dgspec.json
+/api/api/obj/Debug/net6.0/ref/api.dll
+/api/.vs/api/DesignTimeBuild/.dtbcache.v2
+/api/.vs/api/FileContentIndex/29ebab41-e818-4e3d-a11a-bea6c94454f5.vsidx
+/api/.vs/api/FileContentIndex/b5cad6aa-2377-4d14-b218-fd97916bdf8a.vsidx
+/api/.vs/api/FileContentIndex/96fb0edd-4a6e-41d9-a7ed-d2f905c63a28.vsidx
+/api/.vs/api/FileContentIndex/7e4a4a21-1c7f-4688-9afb-f2eae2605f09.vsidx
+/api/.vs/api/v17/.suo
+/package-lock.json

@@ -8,7 +8,6 @@ namespace api.Controllers
 {
 
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
     public class PipeController : ControllerBase
     {
@@ -28,7 +27,8 @@ namespace api.Controllers
 
         // GET api/<PipeController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Pipe))]
+        public ActionResult<Pipe> Get(int id)
         {
             var pipe = pipes.Where(x => x.Id == id).FirstOrDefault();
 
