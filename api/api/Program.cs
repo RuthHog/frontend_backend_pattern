@@ -21,52 +21,52 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
 
-    //options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-    //{
-    //    Type = SecuritySchemeType.OAuth2,
-    //    Flows = new OpenApiOAuthFlows()
-    //    {
-    //        //Implicit = new OpenApiOAuthFlow()
-    //        //{
-    //        //    AuthorizationUrl = new Uri($"https://login.microsoftonline.com/{builder.Configuration["AzureAd:TenantId"]}/oauth2/v2.0/authorize"),
-    //        //    TokenUrl = new Uri($"https://login.microsoftonline.com/common/oauth2/token"),
-    //        //    Scopes = new Dictionary<string, string>
-    //        //{
-    //        //    { $"api://{builder.Configuration["AzureAd:ClientId"]}/user_impersonation", "Access to spts api" }
-    //        //}
-    //        //}
-    //    }
-    //});
-
-
-    options.AddSecurityDefinition(
-    "oauth2",
-    new OpenApiSecurityScheme
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
-        Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\"),",
-        In = ParameterLocation.Header,
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows()
+        {
+            Implicit = new OpenApiOAuthFlow()
+            {
+                AuthorizationUrl = new Uri($"https://login.microsoftonline.com/{builder.Configuration["AzureAd:TenantId"]}/oauth2/v2.0/authorize"),
+                TokenUrl = new Uri($"https://login.microsoftonline.com/common/oauth2/token"),
+                Scopes = new Dictionary<string, string>
+            {
+                { $"api://{builder.Configuration["AzureAd:ClientId"]}/user_impersonation", "Access to spts api" }
+            }
+            }
+        }
     });
 
 
-    //options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+    //options.AddSecurityDefinition(
+    //"oauth2",
+    //new OpenApiSecurityScheme
     //{
-    //    {
-    //       new OpenApiSecurityScheme
-    //       {
-    //            Reference = new OpenApiReference
-    //            {
-    //                Type = ReferenceType.SecurityScheme,
-    //                Id = "oauth2"
-    //            },
-    //            Scheme = "oauth2",
-    //            Name = "oauth2",
-    //            In = ParameterLocation.Header
-    //       },
-    //        new List<string>()
-    //    }
+    //    Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\"),",
+    //    In = ParameterLocation.Header,
+    //    Name = "Authorization",
+    //    Type = SecuritySchemeType.ApiKey
     //});
+
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+    {
+        {
+           new OpenApiSecurityScheme
+           {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "oauth2"
+                },
+                Scheme = "oauth2",
+                Name = "oauth2",
+                In = ParameterLocation.Header
+           },
+            new List<string>()
+        }
+    });
 });
 
 

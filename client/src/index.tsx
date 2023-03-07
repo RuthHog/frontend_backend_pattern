@@ -23,6 +23,7 @@ axios.interceptors.request.use(
       ...loginApiRequest,
       account: account,
     });
+    console.log(msalResponse.accessToken)
     response.headers.Authorization = `Bearer ${msalResponse.accessToken}`;
     return response;
   },
