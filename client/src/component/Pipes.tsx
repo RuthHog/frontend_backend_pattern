@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
-import Pipe from "./Pipe";
+import Pipe from "../models/Pipe";
 export const Pipes = () => {
   const [pipes, setPipes] = useState<Array<Pipe>>();
   const [pipeId, setPipeId] = useState("");
   const [Pipe, setPipe] = useState<Pipe>();
-  const [pipeName, setPipeName] = useState("");
+  const [createPipe, setCreatePipe] = useState("");
+  const [updatePipeName, setUpdatePipeName] = useState("");
+  const [updatePipeId, setUpdatePipeId] = useState("");
+  const [deletePipeId, setDeletePipeId] = useState("");
 
   const getPipes = async () => {
     await axios
@@ -75,11 +78,21 @@ export const Pipes = () => {
     setPipeId(event.target.value);
   };
 
-  const HandlePipeName = (event: any) => {
-    setPipeName(event.target.value);
+  const HandleDeletePipeId = (event: any) => {
+    setDeletePipeId(event.target.value);
   };
 
-  
+  const HandleCreatePipe = (event: any) => {
+    setCreatePipe(event.target.value);
+  };
+
+  const HandleUpdatePipeId = (event: any) => {
+    setUpdatePipeId(event.target.value);
+  };
+
+  const HandleUpdatePipeName = (event: any) => {
+    setUpdatePipeName(event.target.value);
+  };
 
   return (
     <div>
@@ -99,16 +112,16 @@ export const Pipes = () => {
         </h2>
       </div>
       <div>
-        <h1> Create pip</h1>
+        <h1> Create pipe</h1>
         <input
           type="text"
-          id="PipeName"
+          id="CreatePipeName"
           name="message"
           placeholder="pipeName"
-          onChange={HandlePipeName}
-          value={pipeName}
+          onChange={HandleCreatePipe}
+          value={createPipe}
         />
-        <button className="button" onClick={() => postPipes(pipeName)}>
+        <button className="button" onClick={() => postPipes(createPipe)}>
           Create pip
         </button>
       </div>
@@ -116,34 +129,37 @@ export const Pipes = () => {
         <h1> Update pipe</h1>
         <input
           type="text"
-          id="PipeName"
+          id="UpdatePipeName"
           name="message"
           placeholder="pipeName"
-          onChange={HandlePipeName}
-          value={pipeName}
+          onChange={HandleUpdatePipeName}
+          value={updatePipeName}
         />
         <input
           type="text"
-          id="PipeId"
+          id="UpdatePipeId"
           name="message"
           placeholder="pipeId"
-          onChange={HandlePipeId}
-          value={pipeId}
+          onChange={HandleUpdatePipeId}
+          value={updatePipeId}
         />
-        <button className="button" onClick={() => putPipes(pipeId, pipeName)}>
+        <button
+          className="button"
+          onClick={() => putPipes(updatePipeId, updatePipeName)}
+        >
           Update pip
         </button>
         <div>
           <h1>Delete pipe with id {pipeId}</h1>
           <input
             type="text"
-            id="PipeId"
+            id="DeletePipe"
             name="message"
             placeholder="pipeId"
-            onChange={HandlePipeId}
-            value={pipeId}
+            onChange={HandleDeletePipeId}
+            value={deletePipeId}
           />
-          <button className="button" onClick={() => deletePipe(pipeId)}>
+          <button className="button" onClick={() => deletePipe(deletePipeId)}>
             Delete pipe
           </button>
         </div>

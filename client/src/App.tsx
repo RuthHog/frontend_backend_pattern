@@ -3,7 +3,7 @@ import {
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
 // import { Employee } from "./Employee";
-import { Pipes } from "./Pipes";
+import { Pipes } from "./component/Pipes";
 import { SignInButton } from "./SignIn";
 import { SignOutButton } from "./SignOut";
 
